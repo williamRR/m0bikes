@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container">
+  <div class="card mt-5">
+    <table class="center table table-bordered table-sm">
+      <thead class="text-center"><h1>Mis datos</h1></thead>
+      <tbody class="text-center">
+      <tr>
+        <td>NOMBRE</td>
+        <td th:text="${usuario.name}"></td>
+      </tr>
+      <tr>
+        <td>APELLIDO</td>
+        <td th:text="${usuario.lastname}"></td>
+      </tr>
+      <tr>
+        <td>NOMBRE DE USUARIO</td>
+        <td th:text="${usuario.username}"></td>
+      </tr>
+      <tr>
+        <td>CORREO ELECTRÓNICO</td>
+        <td th:text="${usuario.email}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

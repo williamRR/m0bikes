@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<div class="container py-4">
+
+  <div class="card bg-dark text-white">
+    <div class="card-header" th:text="${title}"></div>
+    <div class="card-body">
+      <table class="table table-dark table-bordered">
+          <thead th:if="${!payments.isEmpty()}">
+          <tr class="text-center">
+            <th>Numero</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody class="text-center" th:if="${payments.isEmpty()}">
+          <h2>
+            No hay Medios de pago en la lista!
+          </h2>
+          </tbody>
+          <tbody th:if="${!payments.isEmpty()}">
+          <tr th:each="payment: ${payments}">
+            <td th:text="${payment.numero}"></td>
+            <td class="text-center">
+              <a class="btn btn-danger btn-sm"
+                 onclick="return confirm('Está seguro?')"
+                 th:href="@{/user/deletePayment/}+${payment.id}"
+              >ELIMINAR
+              </a>
+            </td>
+          </tr>
+          </tbody>
+      </table>
+      <div class="text-center">
+        <a class="btn btn-info btn-sm mt-3" th:href="@{/user/newPayment}">Agregar</a>
+      </div>
+    </div>
+  </div>
+</div>

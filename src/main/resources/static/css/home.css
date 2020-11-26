@@ -1,0 +1,71 @@
+body {
+  background: #2c333b;
+  margin: 0;
+  padding: 0;
+}
+
+#home-section: {
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.home-inner {
+  padding: 100px;
+}
+
+.navbar {
+  border-bottom: #fff 2px solid;
+}
+
+footer {
+  border-top: #fff 2px solid;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  min-width: 100%;
+}
+
+.card {
+  background: grey;
+    align-items: center;
+}
+
+.td
+.card-body {
+width:100%}
+
+.table {
+  width: 100%;
+}
+
+label.error {
+  color: red;
+}
+
+input.error {
+  border: red 1px solid;
+}
+
+.modal-content {
+  background: gray;
+}
+
+input: {
+  height: 30px;
+}
+
+form {
+  border-radius: 40px;
+  color: #FFF;
+  font-size: 11px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+label {
+font-size:15px}
+
+alert {
+  margin-botom: 0;
+}
