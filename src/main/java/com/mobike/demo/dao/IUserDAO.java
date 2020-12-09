@@ -5,5 +5,11 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface IUserDAO extends CrudRepository<Usuario, Long> {
 
-  public Usuario findByUsername(String username);
+  Usuario findByUsername(String username);
+
+  Usuario findByEmail(String email);
+
+  Boolean existsByEmail(String email);
+
+  Boolean existsByUsername(String username);
 }

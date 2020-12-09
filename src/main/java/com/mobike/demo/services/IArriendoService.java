@@ -14,4 +14,10 @@ public interface IArriendoService {
   public Optional<Arriendo> findOne(Long id);
 
   public void delete(Long id);
+
+  public List<Arriendo> findByUserId(Long id);
+
+  Arriendo findCurrentRent(Long id);
+
+  void endRent(Arriendo currentRent);
 }

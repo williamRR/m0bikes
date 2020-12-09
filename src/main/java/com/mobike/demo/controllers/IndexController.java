@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -32,19 +33,25 @@ public class IndexController {
   }
 
   @GetMapping("/register")
-  public String registerForm(Model model) {
+  public String register(Model model) {
     model.addAttribute("usuario", new Usuario());
     model.addAttribute("title", "REGISTRO");
     return "registerForm";
   }
 
   @PostMapping("/register")
-  public String registrarNuevo(@Valid Usuario usuario, BindingResult result, RedirectAttributes flash, Model model) {
+  public String postRegister(@Valid Usuario usuario, BindingResult result, RedirectAttributes flash, Model model) {
+
+    if (iUsuarioService.existData(usuario.getEmail(), usuario.getUsername())) {
+      result.addError(new FieldError("username", "username", "usernameAlreadyExist"));
+    }
+
     if (result.hasErrors()) {
       model.addAttribute("title", "NUEVO USUARIO *");
       return "registerForm";
     }
-    String mensajeFlash = (usuario.getId() != null) ? "Usuario Registrado" : "Usuario modificado";
+
+    String mensajeFlash = (usuario.getId() != null) ? "Usuario Modificado" : "Usuario Registrado";
 
     String passwordEncoded = passwordEncoder.encode(usuario.getPassword());
     usuario.setPassword((passwordEncoded));

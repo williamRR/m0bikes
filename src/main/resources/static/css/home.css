@@ -1,5 +1,5 @@
 body {
-  background: #2c333b;
+  background: #000;
   margin: 0;
   padding: 0;
 }
@@ -24,11 +24,6 @@ footer {
   bottom: 0;
   text-align: center;
   min-width: 100%;
-}
-
-.card {
-  background: grey;
-    align-items: center;
 }
 
 .td
@@ -57,7 +52,6 @@ input: {
 
 form {
   border-radius: 40px;
-  color: #FFF;
   font-size: 11px;
   margin: 0 auto;
   padding: 5px;

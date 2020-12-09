@@ -1,7 +1,7 @@
 package com.mobike.demo.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table
@@ -11,20 +11,21 @@ public class Payment {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @NotEmpty
+  @Size(min = 16, max = 16)
   private String numero;
-  @NotEmpty
+  @Size(min = 4, max = 4)
   private String expiracion;
-  @NotEmpty
+  @Size(min = 3, max = 3)
   private String crc;
-  private Long user_id;
+  @Column(name = "user_id")
+  private Long userId;
 
   public Long getUser_id() {
-    return user_id;
+    return userId;
   }
 
   public void setUser_id(Long user_id) {
-    this.user_id = user_id;
+    this.userId = user_id;
   }
 
   public Long getId() {

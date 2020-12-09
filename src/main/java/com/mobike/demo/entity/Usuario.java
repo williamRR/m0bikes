@@ -1,9 +1,9 @@
 package com.mobike.demo.entity;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
@@ -17,17 +17,19 @@ public class Usuario implements Serializable {
   private Long id;
 
   @NotEmpty
-  @Column(length = 60)
+  @Size(min = 5, max = 15)
   private String name;
   @NotEmpty
+  @Size(min = 5, max = 15)
   private String lastname;
   @NotEmpty
+  @Size(min = 5, max = 15)
   private String username;
   @NotEmpty
   @Email
   private String email;
   @NotEmpty
-  @Column(length = 60)
+  @Size(min = 8)
   private String password;
   private Boolean enabled;
   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

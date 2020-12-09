@@ -25,18 +25,18 @@ import javax.validation.Valid;
 public class AdminController {
 
   @Autowired
-  private PasswordEncoder passwordEncoder;
-  @Autowired
   private IUsuarioService iUsuarioService;
   @Autowired
   private IBikeService iBikeService;
   @Autowired
   private IAuthorityService iAuthorityService;
+  @Autowired
+  private PasswordEncoder passwordEncoder;
 
   @GetMapping({"/", "/home"})
   public String home(Model model, Authentication authentication) {
-    model.addAttribute(iUsuarioService.findByUsername(authentication.getName()));
     model.addAttribute("title", "HOME");
+    model.addAttribute(iUsuarioService.findByUsername(authentication.getName()));
     return "adminHome";
   }
 
@@ -67,16 +67,21 @@ public class AdminController {
       model.addAttribute("title", "NUEVO USUARIO *");
       return "newUserForm";
     }
+
+
+    model.addAttribute("title", "USUARIOS");
     String mensajeFlash = (usuario.getId() != null) ? "Usuario Modificado" : "Usuario Registrado";
+
     String passwordEncoded = passwordEncoder.encode(usuario.getPassword());
     usuario.setPassword((passwordEncoded));
     usuario.setEnabled(true);
     iUsuarioService.save(usuario);
 
+    iUsuarioService.save(usuario);
+
     Long id = iUsuarioService.findByUsername(usuario.getUsername()).getId();
     Role role = new Role(id, "ROLE_USER");
     iAuthorityService.save(role);
-    model.addAttribute("title", "USUARIOS");
     flash.addFlashAttribute("success", mensajeFlash);
     return "redirect:/admin/users";
   }

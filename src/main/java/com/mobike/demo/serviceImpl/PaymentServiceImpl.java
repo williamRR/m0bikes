@@ -38,4 +38,9 @@ public class PaymentServiceImpl implements IPaymentService {
   public void delete(Long id) {
     medioPagoDAO.deleteById(id);
   }
+
+  @Override
+  public List<Payment> findByUser(Long id) {
+    return medioPagoDAO.findByUserId(id);
+  }
 }

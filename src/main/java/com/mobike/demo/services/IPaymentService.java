@@ -6,11 +6,13 @@ import java.util.List;
 
 public interface IPaymentService {
 
-  public List<Payment> findAll();
+  List<Payment> findAll();
 
-  public void save(Payment payment);
+  void save(Payment payment);
 
-  public Payment findOne(Long id);
+  Payment findOne(Long id);
 
-  public void delete(Long id);
+  void delete(Long id);
+
+  List<Payment> findByUser(Long id);
 }

@@ -6,14 +6,18 @@ import java.util.List;
 
 public interface IUsuarioService {
 
-  public List<Usuario> findAll();
+  List<Usuario> findAll();
 
-  public void save(Usuario usuario);
+  void save(Usuario usuario);
 
-  public Usuario findOne(Long id);
+  Usuario findOne(Long id);
 
-  public void delete(Long id);
+  void delete(Long id);
 
-  public Usuario findByUsername(String username);
+  Usuario findByUsername(String username);
+
+  Usuario findByEmail(String email);
+
+  Boolean existData(String email, String username);
 }
 

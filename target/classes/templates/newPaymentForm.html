@@ -7,73 +7,63 @@
 <header th:replace="layout/layout :: header"></header>
 
 
-<div class="container py-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              Payment Details
-            </h3>
-          </div>
-          <div class="panel-body">
-            <form method="post" th:action="@{/user/newPayment}" th:object="${payment}">
-              <input th:field="*{id}" type="hidden">
-              <div class="form-group row">
-                <label class="col-sm-4 col-form-label">CARD NUMBER</label>
-                <div class="col-sm-8">
-                  <input class="form-control input-sm"
-                         id="numero"
-                         name="numero"
-                         th:field="*{numero}"
-                         type="text"
-                  />
-                  <small class="form-text text-danger"
-                         th:errors="*{numero}"
-                         th:if="${#fields.hasErrors('numero')}">
-                  </small>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-4 col-form-label">EXPIRATION</label>
-                <div class="col-sm-8">
-                  <input
-                    class="form-control"
-                    id="expiracion"
-                    name="expiracion"
-                    th:field="*{expiracion}"
-                    type="text"/>
-                  <small
-                    class="form-text text-danger"
-                    th:errors="*{expiracion}"
-                    th:if="${#fields.hasErrors('expiracion')}">
-                  </small>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-4 col-form-label">CRC</label>
-                <div class="col-sm-8">
-                  <input
-                    class="form-control"
-                    id="crc"
-                    name="crc"
-                    th:field="*{crc}"
-                    type="text"/>
-                  <small
-                    class="form-text text-danger"
-                    th:errors="*{crc}"
-                    th:if="${#fields.hasErrors('crc')}">
-                  </small>
-                </div>
-              </div>
-              <div class="text-center mt-3">
-                <input class="btn btn-info btn-sm" type="submit" value="GUARDAR"/>
-              </div>
-            </form>
+<div class="container py-3">
+  <div class="card bg-dark text-white">
+    <div class="card-header" th:text="${title}"></div>
+    <div class="card-body">
+      <form method="post" th:action="@{/user/newPayment}" th:object="${payment}">
+        <input th:field="*{id}" type="hidden">
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">CARD NUMBER</label>
+          <div class="col-sm-8">
+            <input class="form-control input-sm"
+                   id="numero"
+                   name="numero"
+                   th:field="*{numero}"
+                   type="text"
+            />
+            <span class="form-text text-danger"
+                  th:errors="*{numero}"
+                  th:if="${#fields.hasErrors('numero')}">
+                  </span>
           </div>
         </div>
-      </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">EXPIRATION</label>
+          <div class="col-sm-8">
+            <input
+              class="form-control"
+              id="expiracion"
+              name="expiracion"
+              th:field="*{expiracion}"
+              type="text"/>
+            <span
+              class="form-text text-danger"
+              th:errors="*{expiracion}"
+              th:if="${#fields.hasErrors('expiracion')}">
+                  </span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">CRC</label>
+          <div class="col-sm-8">
+            <input
+              class="form-control"
+              id="crc"
+              name="crc"
+              th:field="*{crc}"
+              type="text"/>
+            <span
+              class="form-text text-danger"
+              th:errors="*{crc}"
+              th:if="${#fields.hasErrors('crc')}">
+                  </span>
+          </div>
+        </div>
+        <div class="text-center mt-3">
+          <input class="btn btn-info btn-sm" type="submit" value="GUARDAR"/>
+        </div>
+      </form>
     </div>
   </div>
 </div>
